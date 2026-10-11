@@ -1,24 +1,25 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>{{ board.name }}</title>
-    </head>
-    <body>
-        <h1>{{ board.name }}</h1>
-        <p>{{ board.description }}</p>
-        <table border="1">
-            <tr><th>Тема</th><th>Автор</th><th>Ответов</th><th>Создана</th></tr>
-            {% for topic in topics %}
-            <tr>
-                <td>{{ topic.subject }}</td>
-                <td>{{ topic.created_by.username }}</td>
-                <td>{{ topic.posts.count }}</td>
-                <td>{{ topic.created_at|date:"d.m.Y" }}</td>
-            </tr>
-            {% empty %}
-            <tr><td colspan="4">Тем пока нет</td></tr>
-            {% endfor %}
-        </table>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}{{ board.name }} - Форум{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">{{ board.name }}</h1>
+<p class="text-muted">{{ board.description }}</p>
+
+<table class="table table-hover bg-write">
+    <thead>
+        <tr><th>Тема</th><th>Автор</th><th>Ответов</th><th>Создана</th></tr>
+    </thead>
+    <tbody>
+        {% for topic in topics %}
+        <tr>
+            <td>{{ topic.subject }}</td>
+            <td>{{ topic.created_by.username }}</td>
+            <td>{{ topic.posts.count }}</td>
+            <td>{{ topic.created_at|date:"d.m.Y"</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">Тем пока нет</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

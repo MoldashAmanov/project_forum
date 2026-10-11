@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <title>Форум</title>
-    </head>
-    <body>
-        <h1>Разделы проекта</h1>
-        <ul>
-            {% for board in boards %}
-            <li><a href="/boards/{{ board.pk }}/"><strong>{{ board.name }}</strong></a> — {{ board.description }}</li>
-        {% empty %}
-        <li>Разделов пока нет</li>
-        {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Главная - Форум{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Разделы</h1>
+<div class="list-group">
+    {% for board in boards %}
+    <a href="{% url 'forum:board_topics' board.pk %}"
+    class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ board.name }}</h5>
+    </div>
+    </a>
+    {% empty %}
+        <p class="text-muted">Разделов пока нет</p>
+    {% endfor %}
+</div>
+{% endblock %}
