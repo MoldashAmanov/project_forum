@@ -1,0 +1,9 @@
+django-admin startproject config . 
+Точка: без вложенной папки
+python3 manage.py startapp forum
+
+Регистрация в settings
+
+python3 manage.py makemigrations # Создает forum/migrations/0001_initial.py
+python3 manage.py migrate # Применит и создаст таблицы встроенных приложений
+python3 manage.py createsuperuser
