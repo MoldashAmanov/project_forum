@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ board.name }}</title>
+    </head>
+    <body>
+        <h1>{{ board.name }}</h1>
+        <p>{{ board.description }}</p>
+        <table border="1">
+            <tr><th>Тема</th><th>Автор</th><th>Ответов</th><th>Создана</th></tr>
+            {% for topic in topics %}
+            <tr>
+                <td>{{ topic.subject }}</td>
+                <td>{{ topic.created_by.username }}</td>
+                <td>{{ topic.posts.count }}</td>
+                <td>{{ topic.created_at|date:"d.m.Y" }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">Тем пока нет</td></tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

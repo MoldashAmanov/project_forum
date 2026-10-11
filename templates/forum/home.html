@@ -8,7 +8,7 @@
         <h1>Разделы проекта</h1>
         <ul>
             {% for board in boards %}
-            <li><strong>{{ board.name }}</strong> - {{ board.description }}</li>
+            <li><a href="/boards/{{ board.pk }}/"><strong>{{ board.name }}</strong></a> — {{ board.description }}</li>
         {% empty %}
         <li>Разделов пока нет</li>
         {% endfor %}
