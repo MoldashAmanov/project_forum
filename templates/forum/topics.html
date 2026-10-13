@@ -15,7 +15,7 @@
             <td>{{ topic.subject }}</td>
             <td>{{ topic.created_by.username }}</td>
             <td>{{ topic.posts.count }}</td>
-            <td>{{ topic.created_at|date:"d.m.Y"</td>
+            <td>{{ topic.created_at|date:"d.m.Y" }}</td>
         </tr>
         {% empty %}
         <tr><td colspan="4">Тем пока нет</td></tr>
